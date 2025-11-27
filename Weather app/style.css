@@ -1,0 +1,235 @@
+/* general */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    background: #141322;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* optional: link a pixel font from Google Fonts in <head>:
+   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> */
+
+.app-wrapper {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    color: #ffd94a;
+    text-shadow: 0 3px 0 #000;
+    margin: 0;
+}
+
+.subtitle {
+    margin: 0.25rem 0 1rem;
+    color: #fff;
+    font-size: 0.7rem;
+}
+
+/* pixel window */
+
+.window {
+    width: 340px;
+    border-radius: 10px;
+    background: #dbe3f2;
+    border: 4px solid #000;
+    box-shadow: 0 12px 0 #000;
+    overflow: hidden;
+    image-rendering: pixelated;
+}
+
+.window-top {
+    background: #1c2230;
+    color: #fff;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 4px solid #000;
+}
+
+.window-title {
+    font-size: 0.65rem;
+}
+
+.window-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+.dot.red {
+    background: #ff5f57;
+}
+
+.dot.yellow {
+    background: #fdbc2e;
+}
+
+.dot.green {
+    background: #28c840;
+}
+
+.window-body {
+    position: relative;
+    padding: 14px;
+    background: #a8c0d8;
+    /* fake pixel clouds using gradient blocks */
+    background-image:
+        linear-gradient(#c7d6e7 50%, transparent 50%),
+        linear-gradient(90deg, #c7d6e7 50%, transparent 50%);
+    background-size: 40px 40px;
+    color: #ffffff;
+    transition: background 0.5s ease;
+}
+
+/* Themes */
+.window.is-morning .window-body {
+    background-color: #f3c7a4;
+    background-image:
+        linear-gradient(#ffe0b5 50%, transparent 50%),
+        linear-gradient(90deg, #ffe0b5 50%, transparent 50%);
+    color: #5d4037;
+}
+
+.window.is-noon .window-body {
+    background-color: #87ceeb;
+    background-image:
+        linear-gradient(#a0d8ef 50%, transparent 50%),
+        linear-gradient(90deg, #a0d8ef 50%, transparent 50%);
+    color: #fff;
+}
+
+.window.is-night .window-body {
+    background-color: #1a1a2e;
+    background-image:
+        linear-gradient(#252540 50%, transparent 50%),
+        linear-gradient(90deg, #252540 50%, transparent 50%);
+    color: #e0e0e0;
+}
+
+/* weather text */
+
+.big-text {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+
+.small-text {
+    font-size: 0.6rem;
+    margin: 3px 0;
+}
+
+.temp {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.weather-main {
+    text-align: left;
+}
+
+.weather-extra {
+    margin-top: 12px;
+    text-align: left;
+}
+
+/* tiny character – very simple boxy sprite */
+
+.character {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+}
+
+.char-body {
+    width: 60px;
+    /* fixed box width */
+    height: 60px;
+    /* fixed box height */
+    display: flex;
+    align-items: flex-end;
+    /* image sits on the bottom of the box */
+    justify-content: center;
+    overflow: hidden;
+    /* crop image if it’s too big */
+}
+
+.char-body img {
+    display: none;
+    /* hidden by default; JS/CSS will choose one */
+    max-width: 100%;
+    max-height: 100%;
+    image-rendering: pixelated;
+}
+
+
+/* Show specific image based on theme */
+.window.is-morning .char-body img[alt="morning"] {
+    display: block;
+}
+
+.window.is-noon .char-body img[alt="noon"] {
+    display: block;
+}
+
+.window.is-night .char-body img[alt="night"] {
+    display: block;
+}
+
+
+/* bottom bar */
+
+.window-bottom {
+    background: #dbe3f2;
+    border-top: 4px solid #000;
+    padding: 8px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+#city-input {
+    flex: 1;
+    padding: 4px;
+    border: 3px solid #000;
+    font-family: inherit;
+    font-size: 0.6rem;
+    background: #ffffff;
+}
+
+#search-btn {
+    padding: 4px 8px;
+    border: 3px solid #000;
+    background: #ffd94a;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.6rem;
+}
+
+#search-btn:hover {
+    background: #ffe88b;
+}
+
+.status {
+    font-size: 0.5rem;
+    margin-left: 4px;
+}

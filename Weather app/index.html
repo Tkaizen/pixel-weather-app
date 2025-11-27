@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Pixel Weather.exe</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <h1 class="title">weather app</h1>
+        <p class="subtitle">pixel edition</p>
+
+        <!-- Pixel window -->
+        <div class="window">
+            <div class="window-top">
+                <span class="window-title">WEATHER.EXE</span>
+                <div class="window-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+            </div>
+
+            <div class="window-body">
+                <!-- Background clouds are drawn with CSS, but you can also use an image -->
+                <div class="weather-main">
+                    <p id="description" class="big-text">Loading...</p>
+                    <p class="small-text">Humidity: <span id="humidity">--</span>%</p>
+                    <p class="small-text">Wind: <span id="wind">--</span> km/h</p>
+                    <p class="temp" id="temp">--°C</p>
+                </div>
+
+                <div class="weather-extra">
+                    <p class="small-text">
+                        Tomorrow: <span id="tomorrow">--</span>
+                    </p>
+                    <p class="small-text">
+                        Recommendation: <span id="advice">--</span>
+                    </p>
+                </div>
+
+                <!-- Little character -->
+                <div class="character">
+                    <!-- You can replace this with a pixel sprite image -->
+                    <div class="char-body">
+                        <img src="assets/img/morning.gif" alt="morning">
+                        <img src="assets/img/noon.jpg" alt="noon">
+                        <img src="assets/img/night.jpg" alt="night">
+                    </div>
+                </div>
+            </div>
+
+            <div class="window-bottom">
+                <input id="city-input" type="text" placeholder="Enter city..." />
+                <button id="search-btn">Check</button>
+                <span class="status" id="status"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
